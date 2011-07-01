@@ -10,6 +10,7 @@ Depot::Application.configure do
   config.whiny_nils = true
 
   # Show full error reports and disable caching
+  
   config.consider_all_requests_local       = true
   config.action_view.debug_rjs             = true
   config.action_controller.perform_caching = false
@@ -22,5 +23,17 @@ Depot::Application.configure do
 
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
+  
+  config.action_mailer.delivery_method = :smtp
+  
+  config.action_mailer.smtp_settings = {
+    :address => "smtp.163.com",
+    :port => 25,
+    :domain => "www.mywebsite.com",
+    :authentication => "login",
+    :user_name => "hyliu22007@163.com",
+    :password => "123456",
+    :enable_starttls_auto => true
+  }
 end
 
