@@ -6,7 +6,16 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 # encoding: utf-8
+
+Category.delete_all
+@category = Category.create(
+  :name => 'Computer Technology'
+)
+@category.update_attributes(:parent_id => @category.id)
+
+
 Product.delete_all
+
 Product.create(:title => 'Web Design for Developers',
   :description => 
     %{<p>
@@ -19,7 +28,9 @@ Product.create(:title => 'Web Design for Developers',
         all the way to implementation.
       </p>},
   :image_url =>   '/images/wd4d.jpg',    
-  :price => 42.95)
+  :price => 42.95,
+  :category_id => @category.id
+  )
 # . . .
 Product.create(:title => 'Programming Ruby 1.9',
   :description =>
@@ -29,7 +40,9 @@ Product.create(:title => 'Programming Ruby 1.9',
         you should add Ruby to your toolbox.
       </p>},
   :image_url => '/images/ruby.jpg',
-  :price => 49.50)
+  :price => 49.50,
+  :category_id => @category.id
+  )
 # . . .
 
 Product.create(:title => 'Rails Test Prescriptions',
@@ -43,4 +56,8 @@ Product.create(:title => 'Rails Test Prescriptions',
         including Cucumber, Shoulda, Machinist, Mocha, and Rcov.
       </p>},
   :image_url => '/images/rtp.jpg',
-  :price => 43.75)
+  :price => 43.75,
+  :category_id => @category.id
+  )
+  
+User.create(:name => 'admin', :password => '1')

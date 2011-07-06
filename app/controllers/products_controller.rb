@@ -1,3 +1,4 @@
+
 class ProductsController < ApplicationController
   # GET /products
   # GET /products.xml
@@ -14,7 +15,7 @@ class ProductsController < ApplicationController
   # GET /products/1.xml
   def show
     @product = Product.find(params[:id])
-
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @product }
@@ -25,7 +26,7 @@ class ProductsController < ApplicationController
   # GET /products/new.xml
   def new
     @product = Product.new
-
+    @categories = Category.all
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @product }
@@ -41,7 +42,7 @@ class ProductsController < ApplicationController
   # POST /products.xml
   def create
     @product = Product.new(params[:product])
-
+    
     respond_to do |format|
       if @product.save
         format.html { redirect_to(@product, :notice => 'Product was successfully created.') }

@@ -16,6 +16,11 @@
     <%= f.text_field :title %>
   </div>
   <div class="field">
+    	<%= f.label :category_id %><br />
+<%= select("product", "category_id", @categories.collect{|t| [t.name, t.id]}, 
+	{ :include_blank => false }) %> 
+  </div>
+  <div class="field">
     <%= f.label :description %><br />
     <%= f.text_area :description %>
   </div>
