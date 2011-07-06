@@ -59,5 +59,8 @@ Product.create(:title => 'Rails Test Prescriptions',
   :price => 43.75,
   :category_id => @category.id
   )
-  
+ 
+
 User.create(:name => 'admin', :password => '1')
+
+
