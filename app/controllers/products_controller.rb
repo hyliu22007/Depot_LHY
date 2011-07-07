@@ -26,7 +26,6 @@ class ProductsController < ApplicationController
   # GET /products/new.xml
   def new
     @product = Product.new
-    @categories = Category.all
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @product }
