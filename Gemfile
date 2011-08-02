@@ -12,6 +12,8 @@ gem 'will_paginate', '>= 3.0.pre'
 group :production do
 gem 'mysql'
 end
+
+gem 'capistrano'
 # Use unicorn as the web server
 # gem 'unicorn'
 

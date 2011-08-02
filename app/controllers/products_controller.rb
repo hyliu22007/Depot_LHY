@@ -2,9 +2,9 @@
 class ProductsController < ApplicationController
   # GET /products
   # GET /products.xml
+
   def index
     @products = Product.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @products }
@@ -34,6 +34,10 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
+    @product = Product.find(params[:id])
+  end
+  
+  def testedit
     @product = Product.find(params[:id])
   end
 
@@ -86,6 +90,24 @@ class ProductsController < ApplicationController
     respond_to do |format|
       format.atom
       format.xml { render :xml => @product }
+    end
+  end
+  
+  def search
+    title=params[:title]
+    @product=Product.find_by_title(title)
+    respond_to do |format|
+      format.html { render  :action => "show" }
+      format.xml  { render :xml => @product }
+    end
+  end
+  
+  def test
+    test= Product.new(params[:product])
+    @product=Product.find_by_title(test.title)
+    respond_to do |format|
+      format.html { render  :action => "show" }
+      format.xml  { render :xml => @product }
     end
   end
 end

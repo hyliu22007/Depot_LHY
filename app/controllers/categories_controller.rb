@@ -2,8 +2,22 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.xml
   def index
-    @categories = Category.all
-
+    @categories = Array.new
+    
+    Category.all.each{
+      |i|  
+      flag=true
+      @categories.each{|j| 
+        if j.name==i.name 
+          flag=false
+          break
+        end
+      }
+      if flag
+        @categories << i
+      end
+      }
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @categories }

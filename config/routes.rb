@@ -15,6 +15,12 @@ Depot::Application.routes.draw do
     post 'login' => :create
     delete 'logout' => :destroy
   end
+  controller :products do
+    post 'search' => :search
+    post 'test' => :test
+    post 'index' => :index
+    get 'testedit' => :testedit
+  end
   scope '(:locale)' do
     resources :users
     resources :orders

@@ -1,3 +1,25 @@
+
+<div class="search_box">
+ <h1>Search</h1>
+	<%= form_tag  ( :action => :search ,  :method => :post ) do%>
+		<%= text_field_tag :title, params[:title], :size => 30 %>
+		<%= submit_tag "查询" %>
+	<% end %>
+</div>
+<div class="search_box">
+ <h1>test</h1>
+	<%= form_for :product, :url =>{:action => :test }  do |f|%>
+		<%= f.text_field :title,  :size => 30 %>
+		<%= submit_tag "查询" %>
+	<% end %>
+</div>
+<div class="search_box">
+ <h1>Index</h1>
+	<%= form_for :product, :url =>{:action => :index }  do |f|%>
+		<%= f.text_field :title,  :size => 30 %>
+		<%= submit_tag "查询" %>
+	<% end %>
+</div>
 <div id="product_list">
   <h1>Listing products</h1>
 
@@ -24,6 +46,8 @@
       <td class="list_actions">
         <%= link_to 'Show', product %><br/>
         <%= link_to 'Edit', edit_product_path(product) %><br/>
+		<%= link_to 'Edit', :controller => "products", :action => "testedit", :id => product %><br/>
+		<%= link_to 'Edit', { :action => "testedit", :id => product.id } %><br/>
         <%= link_to 'Destroy', product, 
                     :confirm => 'Are you sure?',
                     :method => :delete %>
